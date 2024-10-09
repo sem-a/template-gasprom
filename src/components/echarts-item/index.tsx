@@ -39,12 +39,13 @@ export const EChartsItem = () => {
     yAxis: {
       type: 'value', // тип оси - значение
       fontSize: '16px', // размер шрифта для меток оси
-      min: Math.min.apply(
-        null,
-        mockData
-          .filter((item) => item.indicator === currency.id)
-          .map((item) => item.value)
-      ) - 3, // минимальное значение для оси Y
+      min:
+        Math.min.apply(
+          null,
+          mockData
+            .filter((item) => item.indicator === currency.id)
+            .map((item) => item.value)
+        ) - 3, // минимальное значение для оси Y
       splitLine: {
         lineStyle: {
           type: 'dashed', // тип линии для разделения оси Y
@@ -56,7 +57,9 @@ export const EChartsItem = () => {
         name: currency.id, // имя серии - id валюты
         type: 'line', // тип серии - линия
         stack: 'Total', // стэк для серии
-        data: mockData.filter((item: MockDataType) => item.indicator === currency.id),
+        data: mockData.filter(
+          (item: MockDataType) => item.indicator === currency.id
+        ),
         itemStyle: {
           color: 'rgba(243, 139, 0, 1)', // цвет для серии
         },
@@ -70,7 +73,7 @@ export const EChartsItem = () => {
   };
 
   const [option, setOption] = useState<any>({}); // Состояние для хранения опций графика
-  const [average, setAverage] = useState<number>(0);  // Состояние для хранения среднего значения
+  const [average, setAverage] = useState<number>(0); // Состояние для хранения среднего значения
 
   // Функция для обработки выбора валюты
   const handleSelect = (item: SelectOption) => {
@@ -84,12 +87,12 @@ export const EChartsItem = () => {
       const arrValue = mockData
         .filter((item: MockDataType) => item.indicator === currency.id)
         .map((item) => item.value);
-      const average = arrValue.reduce((acc, current) => acc + current, 0) / arrValue.length;
+      const average =
+        arrValue.reduce((acc, current) => acc + current, 0) / arrValue.length;
       setAverage(average);
     };
     calcAverage();
   }, [currency]);
-
 
   return (
     <div style={{ width: '100%', height: '100%' }}>
@@ -100,27 +103,27 @@ export const EChartsItem = () => {
           onSelect={handleSelect}
         />
       </div>
-      <Layout style={{height: '375px'}}>
+      <Layout style={{ height: '375px' }}>
         <Layout flex={7}>
-        <ReactECharts option={option} />
+          <ReactECharts option={option} />
         </Layout>
         <Layout flex={1}>
-        <div className={styles.average}>
-          <div>
-            <CustomText textAlign="center" fontWeight="200">
-              Среднее за период
-            </CustomText>
-            <CustomText
-              fontSize="48px"
-              lineHeight="72px"
-              textAlign="center"
-              color="rgba(243, 139, 0, 1)"
-            >
-              {average.toFixed(1)}
-              <span className={styles.span}>₽</span>
-            </CustomText>
+          <div className={styles.average}>
+            <div>
+              <CustomText textAlign="center" fontWeight="200">
+                Среднее за период
+              </CustomText>
+              <CustomText
+                fontSize="48px"
+                lineHeight="72px"
+                textAlign="center"
+                color="rgba(243, 139, 0, 1)"
+              >
+                {average.toFixed(1)}
+                <span className={styles.span}>₽</span>
+              </CustomText>
+            </div>
           </div>
-        </div>
         </Layout>
       </Layout>
       {/* <div
