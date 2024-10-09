@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './index.module.css';
 
 type Props = {
@@ -6,17 +6,21 @@ type Props = {
     id: string;
     name: string;
   }[];
-  onSelect: (valuta: string | null) => void;
+  onSelect: (valuta: string) => void;
+  currency: string;
 };
 
-export const Select: React.FC<Props> = ({ option, onSelect }) => {
-  const [activeOption, setActiveOption] = useState<string | null>(null);
+export const Select: React.FC<Props> = ({ option, currency, onSelect }) => {
+  const [activeOption, setActiveOption] = useState<string>(currency);
 
   const handleClick = (id: string) => {
     setActiveOption(id);
-    //console.log(activeOption);
-    // onSelect(activeOption);
+    onSelect(id);
   };
+
+  useEffect(() => {
+    console.log(activeOption)
+  }, [activeOption])
 
   return (
     <>

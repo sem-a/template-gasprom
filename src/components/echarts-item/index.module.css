@@ -1,0 +1,16 @@
+.content {
+    display: inline-block;
+    border: 1px solid #00426947;
+    border-radius: 4px;
+}
+button.select {
+    font-size: 13px;
+    padding: 4px 12px;
+}
+.active {
+    background-color: #0078D2;
+    color: #fff;
+    border: 1px solid #0078D2;
+    border-radius: 3px;
+    transition: all 0.2s ease 0s;
+}
