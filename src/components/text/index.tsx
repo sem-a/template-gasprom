@@ -1,5 +1,4 @@
 import React from 'react';
-import { Text } from '@consta/uikit/Text';
 
 type Props = {
   children: React.ReactNode;

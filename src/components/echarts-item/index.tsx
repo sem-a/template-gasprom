@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { Container } from '../container';
+import { useEffect, useState } from 'react';
 import { ReactECharts } from '../../Echarts/ReactECharts';
 import { mockData, MockDataType } from '../../data/data';
 import { selectOption, SelectOption } from './selectOptionData';
 import { Select } from '../select';
+import { Layout } from '@consta/uikit/Layout';
+
 import styles from './index.module.css';
 import { CustomText } from '../text';
 
@@ -99,7 +100,30 @@ export const EChartsItem = () => {
           onSelect={handleSelect}
         />
       </div>
-      <div
+      <Layout style={{height: '375px'}}>
+        <Layout flex={7}>
+        <ReactECharts option={option} />
+        </Layout>
+        <Layout flex={1}>
+        <div className={styles.average}>
+          <div>
+            <CustomText textAlign="center" fontWeight="200">
+              Среднее за период
+            </CustomText>
+            <CustomText
+              fontSize="48px"
+              lineHeight="72px"
+              textAlign="center"
+              color="rgba(243, 139, 0, 1)"
+            >
+              {average.toFixed(1)}
+              <span className={styles.span}>₽</span>
+            </CustomText>
+          </div>
+        </div>
+        </Layout>
+      </Layout>
+      {/* <div
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -122,7 +146,7 @@ export const EChartsItem = () => {
             <span className={styles.span}>₽</span>
           </CustomText>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -7,10 +7,13 @@ button {
     font-size: 13px;
     padding: 4px 12px;
 }
+button:active {
+    box-shadow: 0 0 2px 3px #0077d23b;
+}
+  
 .active {
     background-color: #0078D2;
     color: #fff;
-    border: 1px solid #0078D2;
     border-radius: 3px;
     transition: all 0.2s ease 0s;
 }

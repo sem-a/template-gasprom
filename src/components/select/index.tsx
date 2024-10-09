@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { SelectOption } from '../echarts-item/selectOptionData';
 import styles from './index.module.css';
 
