@@ -1,6 +1,13 @@
 //Данные для приложения
 
-export const mockData = [
+export interface MockDataType {
+  date: string,
+  month: string,
+  indicator: string,
+  value: number
+}
+
+export const mockData: MockDataType[] = [
   {
     date: '2016-02-01',
     month: 'фев 2016',

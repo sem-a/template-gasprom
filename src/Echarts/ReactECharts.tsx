@@ -19,13 +19,11 @@ export interface ReactEChartsProps {
   forceResize?: boolean;
 }
 
-
 export interface ILegendselectchangedParams {
   name: string;
   selected: Record<string, boolean>;
   type: string;
 }
-
 
 export function ReactECharts({
   option,
@@ -84,8 +82,12 @@ export function ReactECharts({
       loading === true ? chart?.showLoading() : chart?.hideLoading();
     }
   }, [loading, theme]);
+  
 
   return (
-    <div ref={chartRef} style={{ width: '100%', height: '100%', ...style }} />
+    <div
+      ref={chartRef}
+      style={{ width: '100%', height: '100%', ...(style || {}) }}
+    />
   );
 }

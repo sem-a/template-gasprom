@@ -3,13 +3,27 @@ import { Text } from '@consta/uikit/Text';
 
 type Props = {
   children: React.ReactNode;
-  align?: 'left' | 'center' | 'right' | undefined;
+  textAlign?: 'left' | 'center' | 'right' | undefined;
+  fontSize?: string | number | undefined;
+  fontWeight?: string | number | undefined;
+  lineHeight?: string | number | undefined;
+  color?: string;
 };
 
-export const CustomText: React.FC<Props> = ({ children, align = 'left' }) => {
+export const CustomText: React.FC<Props> = ({
+  children,
+  textAlign = 'left',
+  fontSize = '16px',
+  fontWeight = '400',
+  lineHeight = '24px',
+  color = 'rgba(102, 121, 133, 1)',
+}) => {
   return (
-    <Text weight="regular" font="primary" align={align}>
+    <p
+      className="text"
+      style={{ textAlign, fontSize, fontWeight, lineHeight, color}}
+    >
       {children}
-    </Text>
+    </p>
   );
 };

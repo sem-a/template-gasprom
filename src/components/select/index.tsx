@@ -1,37 +1,31 @@
 import React, { useEffect, useState } from 'react';
+import { SelectOption } from '../echarts-item/selectOptionData';
 import styles from './index.module.css';
 
 type Props = {
-  option: {
-    id: string;
-    name: string;
-  }[];
-  onSelect: (valuta: string) => void;
-  currency: string;
+  option: SelectOption[];
+  onSelect: (valuta: SelectOption) => void;
+  currency: SelectOption;
 };
 
 export const Select: React.FC<Props> = ({ option, currency, onSelect }) => {
-  const [activeOption, setActiveOption] = useState<string>(currency);
+  const [activeOption, setActiveOption] = useState<SelectOption>(currency);
 
-  const handleClick = (id: string) => {
-    setActiveOption(id);
-    onSelect(id);
+  const handleClick = (item: SelectOption) => {
+    setActiveOption(item);
+    onSelect(item);
   };
-
-  useEffect(() => {
-    console.log(activeOption)
-  }, [activeOption])
 
   return (
     <>
       <div className={styles.content}>
         {option.map((item) => {
-          const isActive = item.id === activeOption;
+          const isActive = item.id === activeOption.id;
           return (
             <button
               key={item.id}
               onClick={() => {
-                handleClick(item.id);
+                handleClick(item);
               }}
               className={isActive ? styles.active : ''}
             >
